@@ -1,11 +1,11 @@
 /* Chatbot Regione Lombardia - Solo Verde Design Minimal */
 
 :root {
-    --green-dark: #1a7a4a;
-    --green-medium: #2d8f5f;
-    --green-light: #40a474;
-    --green-pale: #f0f9f4;
-    --green-accent: #269054;
+    --green-dark: #006b2a;
+    --green-medium: #009639;
+    --green-light: #4caf50;
+    --green-pale: #f1f8f1;
+    --green-accent: #2e7d32;
 }
 
 /* Reset e layout */
