@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portale Regione</title>
+    <title>FLUPER WEB - Regione Lombardia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/css/bootstrap-italia.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Stili aggiuntivi per la pagina regionale */
-        body {
-            overflow-y: auto;
-            overflow-x: hidden;
+        :root {
+            --green-primary: #009639;
+            --green-dark: #006b2a;
+            --green-light: #4caf50;
+            --green-lighter: #e8f5e8;
+            --green-accent: #2e7d32;
+            --green-bg: #f1f8f1;
         }
+
+        body {
+            background-color: var(--green-bg);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+
         .regionale-header {
             background-color: var(--green-dark);
             color: white;
@@ -34,9 +46,12 @@
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 12px;
         }
 
         .logo-text h1 {
@@ -57,19 +72,29 @@
             border-radius: 8px;
             padding: 0;
             overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         .nav-wrapper {
-            padding: 5px;
+            padding: 2px 0px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            justify-content: center;
         }
 
         .nav-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
+            flex-wrap: nowrap;
+            gap: 4px;
+            margin-bottom: 4px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 8px;
+            padding-bottom: 4px;
+            min-width: max-content;
         }
 
         .nav-row:last-child {
@@ -81,19 +106,20 @@
         .nav-regionale-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
+            gap: 4px;
+            padding: 5px 10px;
+            background-color: var(--green-primary);
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            border-radius: 5px;
             font-size: 11px;
-            transition: background-color 0.3s;
-            border-radius: 6px;
-            flex: 1;
-            min-width: 160px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
+            min-width: 65px;
+            justify-content: center;
+            white-space: nowrap;
         }
 
         .nav-regionale-link:hover {
@@ -102,97 +128,6 @@
 
         .nav-regionale-link.active {
             background-color: var(--green-primary);
-        }
-
-        .dropdown-container {
-            position: relative;
-            flex: 1;
-        }
-
-        .dropdown-toggle {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dropdown-toggle .fa-chevron-down {
-            font-size: 10px;
-            margin-left: 5px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            border: 1px solid var(--green-primary);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            min-width: 280px;
-            padding: 15px;
-            margin-top: 2px;
-        }
-
-        .dropdown-content.show {
-            display: block;
-        }
-
-        .dropdown-section {
-            margin-bottom: 12px;
-        }
-
-        .dropdown-section label {
-            display: block;
-            font-weight: 600;
-            color: var(--green-dark);
-            margin-bottom: 5px;
-            font-size: 13px;
-        }
-
-        .form-select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 13px;
-            background-color: white;
-        }
-
-        .dropdown-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-            justify-content: flex-end;
-        }
-
-        .btn {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background-color: var(--green-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--green-dark);
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
         }
 
         .main-content-regionale {
@@ -216,140 +151,594 @@
             margin-bottom: 20px;
         }
 
-        .section-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333;
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .form-row {
+            display: flex;
             gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid var(--green-primary);
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--green-dark);
+            box-shadow: 0 0 0 0.2rem rgba(0, 107, 42, 0.25);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
             margin-top: 30px;
         }
 
-        .service-card {
-            background-color: white;
-            border: 1px solid var(--green-primary);
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .service-card:hover {
+        .btn-primary {
+            background-color: var(--green-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--green-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,107,42,0.15);
+            box-shadow: 0 4px 12px rgba(0, 107, 42, 0.3);
         }
 
-        .service-icon {
-            font-size: 32px;
-            color: var(--green-primary);
-            margin-bottom: 15px;
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
         }
 
-        .service-title {
-            font-size: 18px;
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+        }
+
+        .features-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--green-primary);
+        }
+
+        .features-title {
+            font-size: 20px;
             font-weight: 600;
             color: var(--green-dark);
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .service-description {
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 15px;
+            background-color: white;
+            border: 2px solid var(--green-primary);
+            border-radius: 8px;
+            color: var(--green-dark);
             font-size: 14px;
-            color: #666;
-            line-height: 1.5;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            min-width: 120px;
         }
 
-        @media (max-width: 768px) {
-            .nav-regionale-list {
-                flex-direction: column;
+        .feature-btn:hover {
+            background-color: var(--green-lighter);
+            border-color: var(--green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 107, 42, 0.2);
+        }
+
+        .feature-btn i {
+            font-size: 24px;
+            color: var(--green-primary);
+        }
+
+        .feature-btn span {
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .main-buttons-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--green-lighter);
+            border-radius: 8px;
+            border: 1px solid var(--green-primary);
+        }
+
+        .main-buttons-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .buttons-left, .buttons-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .right-section {
+            flex: 0 0 200px;
+            background-color: white;
+            border: 2px solid var(--green-primary);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .flow-actions-section {
+            flex: 1;
+            background-color: white;
+            border: 2px solid var(--green-primary);
+            border-radius: 8px;
+            padding: 15px;
+            margin-right: 20px;
+        }
+
+        .flow-actions-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--green-lighter);
+            padding-bottom: 8px;
+        }
+
+        .flow-buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .flow-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--green-lighter);
+            border: 1px solid var(--green-primary);
+            border-radius: 6px;
+            color: var(--green-dark);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+        }
+
+        .flow-btn:hover {
+            background-color: var(--green-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 107, 42, 0.2);
+        }
+
+        .flow-btn i {
+            font-size: 16px;
+            color: var(--green-primary);
+            min-width: 20px;
+        }
+
+        .flow-btn:hover i {
+            color: white;
+        }
+
+        .right-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--green-lighter);
+            padding-bottom: 8px;
+        }
+
+        .small-buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .small-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background-color: var(--green-lighter);
+            border: 1px solid var(--green-primary);
+            border-radius: 6px;
+            color: var(--green-dark);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+        }
+
+        .small-btn:hover {
+            background-color: var(--green-primary);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 107, 42, 0.2);
+        }
+
+        .small-btn i {
+            font-size: 14px;
+            color: var(--green-primary);
+            min-width: 16px;
+        }
+
+        .small-btn:hover i {
+            color: white;
+        }
+
+        .main-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            background-color: white;
+            border: 2px solid var(--green-primary);
+            border-radius: 8px;
+            color: var(--green-dark);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+        }
+
+        .main-btn:hover {
+            background-color: var(--green-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 107, 42, 0.3);
+        }
+
+        .main-btn i {
+            font-size: 20px;
+            color: var(--green-primary);
+            min-width: 24px;
+        }
+
+        .main-btn:hover i {
+            color: white;
+        }
+
+        .flows-section {
+            margin-top: 30px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .flows-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .flows-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .flows-table thead {
+            background-color: var(--green-dark);
+            color: white;
+        }
+
+        .flows-table th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 2px solid var(--green-primary);
+        }
+
+        .flows-table td {
+            padding: 16px 20px;
+            border: 1px solid #e0e0e0;
+            border-left: none;
+            border-right: none;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .flows-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .flows-table tbody tr:hover {
+            background-color: var(--green-lighter);
+        }
+
+        .flows-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .flow-name {
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        .flow-description {
+            color: #555;
+        }
+
+        .flow-status {
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .status-not-sent {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .status-sent {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .flow-actions {
+            padding: 8px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            margin: 2px;
+            background-color: var(--green-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: var(--green-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 107, 42, 0.2);
+        }
+
+        .action-btn i {
+            font-size: 10px;
+        }
+
+        /* Stili per accessibilità da tastiera */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles per accessibilità */
+        *:focus {
+            outline: 2px solid var(--green-accent);
+            outline-offset: 2px;
+        }
+
+        button:focus,
+        select:focus,
+        a:focus {
+            outline: 3px solid var(--green-accent);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.3);
+        }
+
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--green-primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .flows-table {
+                border: 2px solid #000;
             }
             
-            .nav-regionale-link {
-                border-right: none;
-                border-bottom: 1px solid var(--green-primary);
+            .flows-table th {
+                border-bottom: 3px solid #000;
             }
             
-            .nav-regionale-item:last-child .nav-regionale-link {
-                border-bottom: none;
+            .flows-table td {
+                border-bottom: 2px solid #000;
             }
-            
-            .regionale-title {
-                font-size: 24px;
-            }
-            
-            .logo-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .regionale-logo {
-                margin-right: 0;
-                margin-bottom: 15px;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <header class="regionale-header">
+    <!-- Skip to main content for keyboard users -->
+    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+    
+    <header class="regionale-header" role="banner">
         <div class="regionale-container">
             <div class="logo-section">
-                <img src="assets/images/FL.svg" alt="Regione Lombardia" class="logo">
+                <img src="assets/images/FL.svg" alt="Logo Regione Lombardia" class="logo">
                 <div class="logo-text">
-                    <h1>Governo Regionale</h1>
-                    <p class="logo-subtitle">Regione Lombardia</p>
+                    <h1>Regione Lombardia</h1>
                 </div>
             </div>
             
-            <nav class="nav-regionale">
+            <nav class="nav-regionale" role="navigation" aria-label="Menu principale">
                 <div class="nav-wrapper">
                     <div class="nav-row">
-                        <a href="#monitoraggio-caricamenti" class="nav-regionale-link">
-                            <i class="fas fa-upload"></i> MONITORAGGIO CARICAMENTI
+                        <a href="#monitoraggio-caricamenti" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-upload" aria-hidden="true"></i> MONITORAGGIO
                         </a>
-                        <a href="#fluper-comunicazione-priv" class="nav-regionale-link">
-                            <i class="fas fa-building"></i> FLUPER-COMUNICAZIONE AZ. PRIVATE
+                        <a href="#fluper-comunicazione-priv" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-building" aria-hidden="true"></i> FLUPER PRIV
                         </a>
-                        <a href="#fluper-comunicazione-pubb" class="nav-regionale-link">
-                            <i class="fas fa-university"></i> FLUPER-COMUNICAZIONE AZ. PUBBLICHE
+                        <a href="#fluper-comunicazione-pubb" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-university" aria-hidden="true"></i> FLUPER PUBB
                         </a>
-                        <a href="#fluper-conto" class="nav-regionale-link">
-                            <i class="fas fa-calculator"></i> FLUPER CONTO ANNUALE
+                        <a href="#fluper-conto" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-calculator" aria-hidden="true"></i> CONTO ANN
                         </a>
-                        <a href="#fluper-documenti" class="nav-regionale-link">
-                            <i class="fas fa-file-alt"></i> FLUPER GESTIONE DOCUMENTI
+                        <a href="#fluper-documenti" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i> GEST DOC
                         </a>
-                        <a href="#fluper-report-generali" class="nav-regionale-link">
-                            <i class="fas fa-chart-bar"></i> FLUPER-REPORT GENERALI
+                        <a href="#fluper-report-generali" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i> REPORT GEN
                         </a>
-                    </div>
-                    <div class="nav-row">
-                        <a href="fluper-web.html" class="nav-regionale-link">
-                            <i class="fas fa-globe"></i> FLUPER WEB
+                        <a href="#fluper-report-economici" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-euro-sign" aria-hidden="true"></i> REPORT ECO
                         </a>
-                        <a href="#fluper-web-ammin" class="nav-regionale-link">
-                            <i class="fas fa-cog"></i> FLUPER WEB AMMIN
+                        <a href="#archivio" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-archive" aria-hidden="true"></i> ARCHIVIO
                         </a>
-                        <a href="#fluper-web-altri" class="nav-regionale-link">
-                            <i class="fas fa-stream"></i> FLUPER WEB ALTRI
+                        <a href="#web-utenti" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-users" aria-hidden="true"></i> WEB UTENTI
                         </a>
-                        <a href="#fluper-web-dati" class="nav-regionale-link">
-                            <i class="fas fa-database"></i> FLUPER WEB DATI
+                        <a href="#web-log" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-clipboard-list" aria-hidden="true"></i> WEB LOG
                         </a>
-                        <a href="#fluper-web-report" class="nav-regionale-link">
-                            <i class="fas fa-chart-line"></i> FLUPER WEB REPORT
+                        <a href="#web-notif" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-bell" aria-hidden="true"></i> WEB NOTIF
                         </a>
-                        <a href="#fluper-web-export" class="nav-regionale-link">
-                            <i class="fas fa-download"></i> FLUPER WEB EXPORT
+                        <a href="#web-help" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-question-circle" aria-hidden="true"></i> WEB HELP
                         </a>
-                        <a href="#fluper-report-economici" class="nav-regionale-link">
-                            <i class="fas fa-euro-sign"></i> FLUPER-REPORT ECONOMICI
+                        <a href="#web-cerca" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-search" aria-hidden="true"></i> WEB CERCA
                         </a>
-                    </div>
-                    <div class="nav-row">
-                        <a href="regionale.html" class="nav-regionale-link" onclick="navigateToChatbot(event)">
-                            <i class="fas fa-robot"></i> CHATBOT
+                        <a href="#web-home" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-home" aria-hidden="true"></i> WEB HOME
+                        </a>
+                        <a href="regionale.html" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-robot" aria-hidden="true"></i> CHATBOT
                         </a>
                     </div>
                 </div>
@@ -357,60 +746,130 @@
         </div>
     </header>
 
-    <main class="main-content-regionale">
+    <main id="main-content" class="main-content-regionale" role="main" tabindex="-1">
         <div class="regionale-container">
             <div class="content-section">
-                <h2 class="section-title">Benvenuto nel Portale Servizi Regionali</h2>
-                <p class="section-text">
-                    Questo portale ti permette di accedere a tutti i servizi digitali offerti dalla regione. 
-                    Utilizza la navigazione superiore per esplorare i differenti flussi di dati e servizi disponibili.
-                </p>
+                <h2 class="section-title">FLUPER WEB</h2>
                 
-                <div class="card-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
+                <div class="form-container">
+                    <form id="fluper-web-form" aria-label="Form di selezione flussi">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ente" class="sr-only">Ente</label>
+                                <select class="form-select" id="ente" name="ente" required aria-describedby="ente-help">
+                                    <option value="">Ente</option>
+                                    <option value="ats">ATS</option>
+                                    <option value="asst">ASST</option>
+                                    <option value="azienda-ospedaliera">Azienda Ospedaliera</option>
+                                </select>
+                                <span id="ente-help" class="sr-only">Seleziona l'ente per il flusso</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="anno" class="sr-only">Anno</label>
+                                <select class="form-select" id="anno" name="anno" required aria-describedby="anno-help">
+                                    <option value="">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                                <span id="anno-help" class="sr-only">Seleziona l'anno per il flusso</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mese" class="sr-only">Mese</label>
+                                <select class="form-select" id="mese" name="mese" required aria-describedby="mese-help">
+                                    <option value="">Gennaio</option>
+                                    <option value="2">Febbraio</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Aprile</option>
+                                    <option value="5">Maggio</option>
+                                    <option value="6">Giugno</option>
+                                    <option value="7">Luglio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Settembre</option>
+                                    <option value="10">Ottobre</option>
+                                    <option value="11">Novembre</option>
+                                    <option value="12">Dicembre</option>
+                                </select>
+                                <span id="mese-help" class="sr-only">Seleziona il mese per il flusso</span>
+                            </div>
                         </div>
-                        <h3 class="service-title">Flusso Dati</h3>
-                        <p class="service-description">
-                            Accedi al flusso principale di dati regionali per monitorare e analizzare le informazioni in tempo reale.
-                        </p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-network-wired"></i>
+                    </form>
+                </div>
+
+                <!-- Sezione bottoni principali -->
+                <div class="main-buttons-section" role="region" aria-label="Azioni principali">
+                    <div class="main-buttons-row">
+                        <!-- Sezione azioni flussi -->
+                        <div class="flow-actions-section">
+                            <h3 class="flow-actions-title">Azioni Flussi</h3>
+                            <div class="flow-buttons-grid" role="group" aria-label="Azioni sui flussi">
+                                <button class="flow-btn" onclick="sendDataFlow()" aria-label="Invia flusso dati" tabindex="0">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                    <span>Invio Flusso Dati</span>
+                                </button>
+                                <button class="flow-btn" onclick="correctionCF()" aria-label="Correggi codice fiscale" tabindex="0">
+                                    <i class="fas fa-user-edit" aria-hidden="true"></i>
+                                    <span>Correzione CF</span>
+                                </button>
+                                <button class="flow-btn" onclick="eventHistory()" aria-label="Visualizza cronologia eventi" tabindex="0">
+                                    <i class="fas fa-history" aria-hidden="true"></i>
+                                    <span>Cronologia Eventi</span>
+                                </button>
+                            </div>
                         </div>
-                        <h3 class="service-title">Flusso C</h3>
-                        <p class="service-description">
-                            Servizi specializzati per la gestione dei flussi di comunicazione tra enti e strutture sanitarie.
-                        </p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-landmark"></i>
+                        
+                        <!-- Sezione destra con bottoni piccoli -->
+                        <div class="right-section">
+                            <h3 class="right-section-title">Utilità</h3>
+                            <div class="small-buttons-grid" role="group" aria-label="Utilità">
+                                <button class="small-btn" onclick="exportData()" title="Export" aria-label="Esporta dati" tabindex="0">
+                                    <i class="fas fa-download" aria-hidden="true"></i>
+                                    <span>Export</span>
+                                </button>
+                                <button class="small-btn" onclick="modello()" title="Modello" aria-label="Scarica modello" tabindex="0">
+                                    <i class="fas fa-file-excel" aria-hidden="true"></i>
+                                    <span>Modello</span>
+                                </button>
+                                <button class="small-btn" onclick="tabRif()" title="Tab Rif" aria-label="Tabelle di riferimento" tabindex="0">
+                                    <i class="fas fa-table" aria-hidden="true"></i>
+                                    <span>Tab Rif</span>
+                                </button>
+                            </div>
                         </div>
-                        <h3 class="service-title">Flusso Ministeriale</h3>
-                        <p class="service-description">
-                            Integrazione con i sistemi ministeriali per la gestione dei protocolli nazionali.
-                        </p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3 class="service-title">Assistente Virtuale</h3>
-                        <p class="service-description">
-                            Chiedi aiuto al nostro chatbot per ottenere risposte immediate alle tue domande.
-                        </p>
                     </div>
                 </div>
-            </div>
-            
-            <div id="content-area" class="content-section" style="display: none;">
-                <!-- Il contenuto dinamico verrà caricato qui -->
+
+                <!-- Tabella flussi disponibili -->
+                <div class="flows-section" role="region" aria-label="Flussi disponibili">
+                    <h3 class="flows-title">Flussi Disponibili</h3>
+                    <div class="table-container">
+                        <table class="flows-table" role="table" aria-label="Tabella flussi disponibili">
+                            <thead>
+                                <tr role="row">
+                                    <th scope="col" id="col-name">Nome Flusso</th>
+                                    <th scope="col" id="col-desc">Descrizione</th>
+                                    <th scope="col" id="col-status">Stato</th>
+                                </tr>
+                            </thead>
+                            <tbody role="rowgroup">
+                                <tr role="row">
+                                    <td headers="col-name" class="flow-name">Flusso A</td>
+                                    <td headers="col-desc" class="flow-description">Dati anagrafici</td>
+                                    <td headers="col-status" class="flow-status status-not-sent" aria-label="Stato: Non inviato">Non inviato</td>
+                                </tr>
+                                <tr role="row">
+                                    <td headers="col-name" class="flow-name">Flusso B</td>
+                                    <td headers="col-desc" class="flow-description">Dati economici</td>
+                                    <td headers="col-status" class="flow-status status-not-sent" aria-label="Stato: Non inviato">Non inviato</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -418,130 +877,123 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/js/bootstrap-italia.bundle.min.js"></script>
     <script src="script.js"></script>
     <script>
-        function toggleDropdown(event, dropdownId) {
-            event.preventDefault();
-            event.stopPropagation();
-            
-            // Close all other dropdowns
-            const allDropdowns = document.querySelectorAll('.dropdown-content');
-            allDropdowns.forEach(dropdown => {
-                if (dropdown.id !== dropdownId) {
-                    dropdown.classList.remove('show');
-                }
-            });
-            
-            // Toggle current dropdown
-            const dropdown = document.getElementById(dropdownId);
-            dropdown.classList.toggle('show');
+        function resetForm() {
+            document.getElementById('fluper-web-form').reset();
         }
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown-container')) {
-                const dropdowns = document.querySelectorAll('.dropdown-content');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('show');
-                });
-            }
-        });
-        
-        function navigateTo(section) {
-            // Rimuovi la classe active da tutti i link
-            document.querySelectorAll('.nav-regionale-link').forEach(link => {
-                link.classList.remove('active');
-            });
+
+        function showInfo() {
+            alert('FLUPER WEB - Sistema di gestione flussi web per la Regione Lombardia');
+        }
+
+        function exportData() {
+            const ente = document.getElementById('ente').value;
+            const anno = document.getElementById('anno').value;
+            const mese = document.getElementById('mese').value;
             
-            // Aggiungi la classe active al link cliccato
-            event.target.classList.add('active');
-            
-            // Mostra il contenuto dinamico
-            const contentArea = document.getElementById('content-area');
-            contentArea.style.display = 'block';
-            
-            // Carica il contenuto in base alla sezione
-            switch(section) {
-                case 'flusso':
-                    contentArea.innerHTML = `
-                        <h2 class="section-title">Flusso Principale</h2>
-                        <p class="section-text">
-                            Il flusso principale raccoglie tutti i dati provenienti dalle strutture regionali 
-                            e li elabora per fornire analisi e report in tempo reale.
-                        </p>
-                        <div class="card-grid">
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-database"></i></div>
-                                <h3 class="service-title">Database Centrale</h3>
-                                <p class="service-description">Archivio unico di tutti i dati regionali</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
-                                <h3 class="service-title">Sincronizzazione</h3>
-                                <p class="service-description">Aggiornamento automatico dei dati</p>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'flusso-c':
-                    contentArea.innerHTML = `
-                        <h2 class="section-title">Flusso C - Comunicazioni</h2>
-                        <p class="section-text">
-                            Sistema dedicato alla gestione delle comunicazioni tra i diversi enti regionali 
-                            e le strutture sanitarie del territorio.
-                        </p>
-                        <div class="card-grid">
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-envelope"></i></div>
-                                <h3 class="service-title">Messaggistica</h3>
-                                <p class="service-description">Sistema di messaggistica sicura tra enti</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-                                <h3 class="service-title">Documentazione</h3>
-                                <p class="service-description">Repository centralizzato di documenti</p>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'flusso-ministeriale':
-                    contentArea.innerHTML = `
-                        <h2 class="section-title">Flusso Ministeriale</h2>
-                        <p class="section-text">
-                            Interfaccia diretta con i sistemi ministeriali per la gestione dei protocolli 
-                            nazionali e la trasmissione dei dati obbligatori.
-                        </p>
-                        <div class="card-grid">
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
-                                <h3 class="service-title">Scambio Dati</h3>
-                                <p class="service-description">Trasmissione sicura verso il ministero</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                                <h3 class="service-title">Sicurezza</h3>
-                                <p class="service-description">Protocolli di sicurezza certificati</p>
-                            </div>
-                        </div>
-                    `;
-                    break;
+            if (!ente || !anno || !mese) {
+                alert('Seleziona prima ente, anno e mese');
+                return;
             }
             
-            // Scroll to content
-            contentArea.scrollIntoView({ behavior: 'smooth' });
+            console.log('Export dati:', { ente, anno, mese });
+            alert(`Export dati per:\nEnte: ${ente}\nAnno: ${anno}\nMese: ${mese}`);
         }
-        
-        function navigateToChatbot(event) {
-            // Permetti la navigazione normale verso il chatbot
-            // Non preveniamo il comportamento di default
+
+        function showNotes() {
+            alert('Funzione Note - Apertura pannello note');
         }
-        
-        // Imposta il primo link come attivo al caricamento
-        document.addEventListener('DOMContentLoaded', function() {
-            const firstLink = document.querySelector('.nav-regionale-link');
-            if (firstLink) {
-                firstLink.classList.add('active');
+
+        function sendDataFlow() {
+            const ente = document.getElementById('ente').value;
+            const anno = document.getElementById('anno').value;
+            const mese = document.getElementById('mese').value;
+            
+            if (!ente || !anno || !mese) {
+                alert('Seleziona prima ente, anno e mese');
+                return;
             }
+            
+            console.log('Invio flusso dati:', { ente, anno, mese });
+            alert(`Invio flusso dati per:\nEnte: ${ente}\nAnno: ${anno}\nMese: ${mese}`);
+        }
+
+        function correctionCF() {
+            alert('Apertura maschera correzione Codice Fiscale');
+        }
+
+        function eventHistory() {
+            alert('Apertura cronologia eventi');
+        }
+
+        function importData() {
+            alert('Apertura maschera importazione dati');
+        }
+
+        function validateData() {
+            const ente = document.getElementById('ente').value;
+            const anno = document.getElementById('anno').value;
+            const mese = document.getElementById('mese').value;
+            
+            if (!ente || !anno || !mese) {
+                alert('Seleziona prima ente, anno e mese');
+                return;
+            }
+            
+            console.log('Validazione dati:', { ente, anno, mese });
+            alert(`Validazione dati per:\nEnte: ${ente}\nAnno: ${anno}\nMese: ${mese}`);
+        }
+
+        function reports() {
+            alert('Apertura sezione report');
+        }
+
+        function settings() {
+            alert('Apertura impostazioni');
+        }
+
+        function help() {
+            alert('Apertura guida in linea');
+        }
+
+        function logout() {
+            if (confirm('Sei sicuro di voler uscire?')) {
+                alert('Logout effettuato');
+                // Qui si potrebbe reindirizzare alla pagina di login
+            }
+        }
+
+        function modello() {
+            const ente = document.getElementById('ente').value;
+            const anno = document.getElementById('anno').value;
+            const mese = document.getElementById('mese').value;
+            
+            if (!ente || !anno || !mese) {
+                alert('Seleziona prima ente, anno e mese');
+                return;
+            }
+            
+            console.log('Download modello:', { ente, anno, mese });
+            alert(`Download modello per:\nEnte: ${ente}\nAnno: ${anno}\nMese: ${mese}`);
+        }
+
+        function tabRif() {
+            alert('Apertura tabelle di riferimento');
+        }
+
+        document.getElementById('fluper-web-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const ente = document.getElementById('ente').value;
+            const anno = document.getElementById('anno').value;
+            const mese = document.getElementById('mese').value;
+            
+            if (!ente || !anno || !mese) {
+                alert('Per favore, compila tutti i campi');
+                return;
+            }
+            
+            console.log('Dati inviati:', { ente, anno, mese });
+            alert(`Dati inviati:\nEnte: ${ente}\nAnno: ${anno}\nMese: ${mese}`);
         });
     </script>
 </body>
