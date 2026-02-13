@@ -46,9 +46,12 @@
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 12px;
         }
 
         .logo-text h1 {
@@ -69,19 +72,29 @@
             border-radius: 8px;
             padding: 0;
             overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         .nav-wrapper {
-            padding: 5px;
+            padding: 2px 0px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            justify-content: center;
         }
 
         .nav-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
+            flex-wrap: nowrap;
+            gap: 4px;
+            margin-bottom: 4px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 8px;
+            padding-bottom: 4px;
+            min-width: max-content;
         }
 
         .nav-row:last-child {
@@ -93,19 +106,20 @@
         .nav-regionale-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 15px;
+            gap: 4px;
+            padding: 5px 10px;
+            background-color: var(--green-primary);
             color: white;
             text-decoration: none;
+            border-radius: 5px;
+            font-size: 11px;
             font-weight: 500;
-            font-size: 12px;
-            transition: background-color 0.3s;
-            border-radius: 6px;
-            flex: 1;
-            min-width: 180px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
+            min-width: 65px;
+            justify-content: center;
+            white-space: nowrap;
         }
 
         .nav-regionale-link:hover {
@@ -672,8 +686,7 @@
             <div class="logo-section">
                 <img src="assets/images/FL.svg" alt="Logo Regione Lombardia" class="logo">
                 <div class="logo-text">
-                    <h1>Governo Regionale</h1>
-                    <p class="logo-subtitle">Regione Lombardia</p>
+                    <h1>Regione Lombardia</h1>
                 </div>
             </div>
             
@@ -681,40 +694,46 @@
                 <div class="nav-wrapper">
                     <div class="nav-row">
                         <a href="#monitoraggio-caricamenti" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-upload" aria-hidden="true"></i> MONITORAGGIO CARICAMENTI
+                            <i class="fas fa-upload" aria-hidden="true"></i> MONITORAGGIO
                         </a>
                         <a href="#fluper-comunicazione-priv" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-building" aria-hidden="true"></i> FLUPER-COMUNICAZIONE DI SERVIZIO AZ. PRIVATE
+                            <i class="fas fa-building" aria-hidden="true"></i> FLUPER PRIV
                         </a>
                         <a href="#fluper-comunicazione-pubb" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-university" aria-hidden="true"></i> FLUPER-COMUNICAZIONE DI SERVIZIO AZ. PUBBLICHE
+                            <i class="fas fa-university" aria-hidden="true"></i> FLUPER PUBB
                         </a>
-                    </div>
-                    <div class="nav-row">
-                        <a href="fluper-web.html" class="nav-regionale-link active" tabindex="0" aria-current="page">
-                            <i class="fas fa-globe" aria-hidden="true"></i> FLUPER WEB
-                        </a>
-                        <a href="#fluper-web-ammin" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-cog" aria-hidden="true"></i> FLUPER WEB AMMINISTRAZIONE
-                        </a>
-                        <a href="#fluper-web-altri" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-stream" aria-hidden="true"></i> FLUPER WEB ALTRI FLUSSI
-                        </a>
-                    </div>
-                    <div class="nav-row">
                         <a href="#fluper-conto" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-calculator" aria-hidden="true"></i> FLUPER CONTO ANNUALE
+                            <i class="fas fa-calculator" aria-hidden="true"></i> CONTO ANN
                         </a>
                         <a href="#fluper-documenti" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-file-alt" aria-hidden="true"></i> FLUPER GESTIONE DOCUMENTI
+                            <i class="fas fa-file-alt" aria-hidden="true"></i> GEST DOC
                         </a>
                         <a href="#fluper-report-generali" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-chart-bar" aria-hidden="true"></i> FLUPER-REPORT GENERALI
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i> REPORT GEN
                         </a>
-                    </div>
-                    <div class="nav-row">
                         <a href="#fluper-report-economici" class="nav-regionale-link" tabindex="0">
-                            <i class="fas fa-euro-sign" aria-hidden="true"></i> FLUPER-REPORT ECONOMICI
+                            <i class="fas fa-euro-sign" aria-hidden="true"></i> REPORT ECO
+                        </a>
+                        <a href="#archivio" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-archive" aria-hidden="true"></i> ARCHIVIO
+                        </a>
+                        <a href="#web-utenti" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-users" aria-hidden="true"></i> WEB UTENTI
+                        </a>
+                        <a href="#web-log" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-clipboard-list" aria-hidden="true"></i> WEB LOG
+                        </a>
+                        <a href="#web-notif" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-bell" aria-hidden="true"></i> WEB NOTIF
+                        </a>
+                        <a href="#web-help" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-question-circle" aria-hidden="true"></i> WEB HELP
+                        </a>
+                        <a href="#web-cerca" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-search" aria-hidden="true"></i> WEB CERCA
+                        </a>
+                        <a href="#web-home" class="nav-regionale-link" tabindex="0">
+                            <i class="fas fa-home" aria-hidden="true"></i> WEB HOME
                         </a>
                         <a href="regionale.html" class="nav-regionale-link" tabindex="0">
                             <i class="fas fa-robot" aria-hidden="true"></i> CHATBOT
