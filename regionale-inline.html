@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Regione Lombardia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/css/bootstrap-italia.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Chatbot Regione Lombardia - Solo Verde Design Minimal */
+
+        :root {
+            --green-dark: #006b2a;
+            --green-medium: #009639;
+            --green-light: #4caf50;
+            --green-pale: #f1f8f1;
+            --green-accent: #2e7d32;
+        }
+
+        /* Reset e layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--green-pale);
+            color: var(--green-dark);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Layout principale */
+        .chat-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--green-dark);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--green-accent);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--green-accent);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+        }
+
+        .user-avatar .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .new-chat-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .new-chat-btn:hover {
+            background-color: var(--green-light);
+        }
+
+        /* Sessioni */
+        .sessions-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .sessions-header {
+            margin-bottom: 20px;
+        }
+
+        .sessions-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .session-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .session-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .session-item.active {
+            background-color: var(--green-medium);
+            color: white;
+        }
+
+        .session-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .session-date {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .session-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .edit-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Bot message box */
+        .bot-message-box {
+            background-color: var(--green-light);
+            border: 1px solid var(--green-accent);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 20px;
+            box-shadow: 0 2px 8px rgba(0, 138, 71, 0.1);
+        }
+
+        .bot-message-box .message-content {
+            color: var(--green-dark);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .bot-message-box .message-content p {
+            margin: 0;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--green-pale);
+        }
+
+        .chat-header {
+            background-color: var(--green-dark);
+            color: white;
+            padding: 20px;
+            border-bottom: 1px solid var(--green-accent);
+        }
+
+        .chat-header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: var(--green-pale);
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--green-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-bubble {
+            background-color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--green-accent);
+            max-width: 80%;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background-color: var(--green-medium);
+            color: white;
+            margin-left: auto;
+        }
+
+        /* Welcome section */
+        .welcome-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .welcome-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: var(--green-accent);
+            margin-bottom: 32px;
+        }
+
+        /* Suggested questions */
+        .suggestions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .suggestion-card {
+            background-color: white;
+            border: 1px solid var(--green-accent);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .suggestion-card:hover {
+            background-color: var(--green-light);
+            border-color: var(--green-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 168, 87, 0.15);
+        }
+
+        .suggestion-title {
+            color: var(--green-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Response Type Selection */
+        .response-type-section {
+            background-color: var(--green-dark);
+            border: 1px solid var(--green-accent);
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+        }
+
+        .response-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .response-options {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .response-option {
+            background-color: white;
+            border: 1px solid var(--green-accent);
+            border-radius: 8px;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: var(--green-dark);
+        }
+
+        .response-option:hover {
+            background-color: var(--green-light);
+            border-color: var(--green-medium);
+        }
+
+        .response-option.active {
+            background-color: var(--green-medium);
+            color: white;
+            border-color: var(--green-medium);
+        }
+
+        .response-option i {
+            font-size: 14px;
+        }
+
+        /* Input area */
+        .input-container {
+            padding: 20px;
+            background-color: var(--green-pale);
+            border-top: 1px solid var(--green-accent);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--green-accent);
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .message-input:focus {
+            border-color: var(--green-medium);
+        }
+
+        .send-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--green-medium);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .send-btn:hover {
+            background-color: var(--green-light);
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: none;
+            padding: 16px 20px;
+            color: var(--green-accent);
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-accent);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--green-medium);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                height: 100vh;
+                z-index: 1000;
+                transition: left 0.3s;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .suggestions-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="FL.svg" alt="Regione Lombardia" class="logo">
+                    </div>
+                    <div class="user-name">Regione Lombardia</div>
+                </div>
+                <button class="new-chat-btn">
+                    <i class="fas fa-plus"></i> Nuova Chat
+                </button>
+            </div>
+            
+            <div class="sessions-container">
+                <div class="sessions-header">
+                    <h3>Chat Recenti</h3>
+                </div>
+                
+                <div class="session-item active">
+                    <div class="session-info">
+                        <div class="session-title">Assistenza FLUPER</div>
+                        <div class="session-date">Oggi, 14:30</div>
+                    </div>
+                    <div class="session-actions">
+                        <button class="edit-btn" title="Modifica">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-btn" title="Elimina">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">Supporto Tecnico</div>
+                        <div class="session-date">Ieri, 09:15</div>
+                    </div>
+                    <div class="session-actions">
+                        <button class="edit-btn" title="Modifica">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-btn" title="Elimina">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">Informazioni Generali</div>
+                        <div class="session-date">2 giorni fa</div>
+                    </div>
+                    <div class="session-actions">
+                        <button class="edit-btn" title="Modifica">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-btn" title="Elimina">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="chat-header">
+                <h1>Assistente Virtuale Regione Lombardia</h1>
+            </div>
+            
+            <div class="chat-messages">
+                <!-- Welcome section -->
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Benvenuto nell'Assistente Virtuale</h2>
+                    <p class="welcome-subtitle">Come posso aiutarti oggi?</p>
+                </div>
+                
+                <!-- Suggested questions -->
+                <div class="suggestions-container">
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">
+                            <i class="fas fa-question-circle"></i>
+                            Come funziona il sistema FLUPER?
+                        </div>
+                    </div>
+                    
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">
+                            <i class="fas fa-file-alt"></i>
+                            Quali documenti servono per l'invio?
+                        </div>
+                    </div>
+                    
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">
+                            <i class="fas fa-clock"></i>
+                            Quali sono le scadenze?
+                        </div>
+                    </div>
+                    
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">
+                            <i class="fas fa-user"></i>
+                            Come accedo ai miei dati?
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Response type selection -->
+                <div class="response-type-section">
+                    <h3 class="response-title">Tipo di risposta preferita</h3>
+                    <div class="response-options">
+                        <div class="response-option active">
+                            <i class="fas fa-comments"></i>
+                            Conversazione
+                        </div>
+                        <div class="response-option">
+                            <i class="fas fa-list"></i>
+                            Risposte brevi
+                        </div>
+                        <div class="response-option">
+                            <i class="fas fa-file-alt"></i>
+                            Dettagliato
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bot message -->
+                <div class="bot-message-box">
+                    <div class="message-content">
+                        <p>Ciao! Sono l'assistente virtuale della Regione Lombardia. Posso aiutarti con informazioni sui servizi FLUPER, documentazione, scadenze e procedure. Cosa desideri sapere?</p>
+                    </div>
+                </div>
+                
+                <!-- Sample messages -->
+                <div class="message user">
+                    <div class="message-avatar">U</div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            Ho bisogno di informazioni sull'invio dei dati FLUPER
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            Per l'invio dei dati FLUPER, devi accedere al portale web, selezionare l'ente, l'anno e il mese, poi compilare i campi richiesti. La scadenza è il 15 del mese successivo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <input type="text" class="message-input" placeholder="Scrivi il tuo messaggio...">
+                    <button class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Typing indicator -->
+            <div class="typing-indicator">
+                L'assistente sta scrivendo...
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/js/bootstrap-italia.bundle.min.js"></script>
+    <script>
+        // Funzionalità base del chatbot
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageInput = document.querySelector('.message-input');
+            const sendBtn = document.querySelector('.send-btn');
+            const chatMessages = document.querySelector('.chat-messages');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            
+            // Invio messaggio
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (message) {
+                    // Aggiungi messaggio utente
+                    addMessage(message, 'user');
+                    
+                    // Pulisci input
+                    messageInput.value = '';
+                    
+                    // Mostra indicatore di digitazione
+                    typingIndicator.style.display = 'block';
+                    
+                    // Simula risposta bot
+                    setTimeout(() => {
+                        typingIndicator.style.display = 'none';
+                        addMessage('Ho ricevuto la tua richiesta. Sto elaborando una risposta...', 'bot');
+                    }, 1000);
+                }
+            }
+            
+            // Aggiungi messaggio alla chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar';
+                if (sender === 'user') {
+                    avatar.textContent = 'U';
+                } else {
+                    avatar.innerHTML = '<i class="fas fa-robot"></i>';
+                }
+                
+                const content = document.createElement('div');
+                content.className = 'message-content';
+                content.innerHTML = `<div class="message-bubble">${text}</div>`;
+                
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(content);
+                chatMessages.appendChild(messageDiv);
+                
+                // Scroll in basso
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Event listeners
+            sendBtn.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Suggestion cards
+            document.querySelectorAll('.suggestion-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    messageInput.value = this.textContent.trim();
+                    messageInput.focus();
+                });
+            });
+            
+            // Response options
+            document.querySelectorAll('.response-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.response-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
