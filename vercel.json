@@ -7,6 +7,14 @@
     {
       "src": "index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "regionale.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "fluper-web.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
