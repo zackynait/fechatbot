@@ -39,6 +39,13 @@
     margin-right: 10px;
 }
 
+.user-avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .user-name {
     font-weight: bold;
     color: var(--green-dark);
@@ -63,6 +70,12 @@
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+}
+
+.sessions-header h3 {
+    margin: 0 0 15px 0;
+    color: var(--green-dark);
+    font-size: 1rem;
 }
 
 .session-item {
@@ -101,12 +114,16 @@
     gap: 5px;
 }
 
-.delete-btn {
+.edit-btn, .delete-btn {
     background: none;
     border: none;
     color: #999;
     cursor: pointer;
     padding: 5px;
+}
+
+.edit-btn:hover {
+    color: var(--green-primary);
 }
 
 .delete-btn:hover {
@@ -125,9 +142,11 @@
 .chat-header {
     padding: 20px;
     border-bottom: 1px solid var(--green-primary);
+    background: var(--green-dark);
+    color: white;
 }
 
-.chat-title {
+.chat-header h1 {
     margin: 0;
     font-size: 1.5rem;
     font-weight: bold;
@@ -146,12 +165,12 @@
     margin-bottom: 30px;
 }
 
-.welcome-title {
+.welcome-section h2 {
     color: var(--green-dark);
     margin-bottom: 10px;
 }
 
-.welcome-subtitle {
+.welcome-section p {
     color: #666;
 }
 
@@ -181,6 +200,51 @@
 .suggestion-title {
     color: var(--green-dark);
     font-weight: 500;
+}
+
+.response-type-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--green-primary);
+}
+
+.response-title {
+    color: var(--green-dark);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.response-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.response-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: 1px solid var(--green-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.response-option:hover {
+    background: var(--green-lighter);
+}
+
+.response-option.active {
+    background: var(--green-primary);
+    color: white;
+    border-color: var(--green-primary);
+}
+
+.response-option i {
+    font-size: 1rem;
 }
 
 .typing-indicator {
@@ -275,15 +339,6 @@ body {
     color: white;
 }
 
-.chat-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.chat-messages {
-    background: var(--green-lighter);
-}
-
 .message {
     animation: fadeIn 0.3s ease-in;
 }
@@ -293,28 +348,41 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.bot-avatar {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+.bot-message {
+    margin-bottom: 15px;
 }
 
-.user-avatar {
+.bot-message .d-flex {
+    align-items: flex-start;
+}
+
+.user-message {
+    margin-bottom: 15px;
+    justify-content: flex-end;
+}
+
+.user-message .d-flex {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
+.bot-avatar, .user-avatar {
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .bot-message .message-content {
     background: var(--green-lighter);
     border-left: 4px solid var(--green-primary);
     max-width: 70%;
+    padding: 15px;
+    border-radius: 8px;
+    margin-left: 10px;
 }
 
 .user-message .message-content {
@@ -323,14 +391,9 @@ body {
     max-width: 70%;
     margin-left: auto;
     color: white;
-}
-
-.user-message {
-    justify-content: flex-end;
-}
-
-.user-message .d-flex {
-    flex-direction: row-reverse;
+    padding: 15px;
+    border-radius: 8px;
+    margin-right: 10px;
 }
 
 .user-message .user-avatar {
@@ -338,18 +401,6 @@ body {
     color: white;
     margin-left: 8px;
     margin-right: 0;
-}
-
-.typing-indicator {
-    display: none;
-    padding: 10px;
-    background: var(--green-lighter);
-    border-radius: 10px;
-    max-width: 100px;
-}
-
-.typing-indicator.active {
-    display: inline-block;
 }
 
 .typing-indicator span {
@@ -377,23 +428,6 @@ body {
     30% {
         transform: translateY(-10px);
     }
-}
-
-.input-group .form-control {
-    border-radius: 20px 0 0 20px;
-    border: 2px solid var(--green-primary);
-    background: white;
-}
-
-.input-group .form-control:focus {
-    border-color: var(--green-primary);
-    box-shadow: 0 0 0 0.2rem rgba(0, 150, 57, 0.25);
-    background: var(--green-lighter);
-}
-
-.input-group .btn {
-    border-radius: 0 20px 20px 0;
-    padding: 0 20px;
 }
 
 header {
@@ -463,6 +497,11 @@ header .text-muted {
     
     .input-container {
         padding: 15px;
+    }
+    
+    .response-options {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
