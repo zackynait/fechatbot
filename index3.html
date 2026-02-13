@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Regione Lombardia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/css/bootstrap-italia.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 bg-light border-end">
+                <div class="p-3">
+                    <div class="text-center mb-3">
+                        <img src="assets/images/FL.svg" alt="Regione Lombardia" class="img-fluid mb-2" style="max-width: 60px;">
+                        <h5 class="mb-0">Regione Lombardia</h5>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-plus me-2"></i> Nuova Chat
+                    </button>
+                    
+                    <h6 class="text-muted mb-3">Sessioni recenti</h6>
+                    
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action active">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <div class="fw-bold">Chat 01/12/2025 - 14:20</div>
+                                    <small class="text-muted">14:20</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <div class="fw-bold">Demo funzionamento chatbot</div>
+                                    <small class="text-muted">11:16</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <div class="fw-bold">Chat 01/12/2025 - 11:16</div>
+                                    <small class="text-muted">11:16</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <div class="fw-bold">Chatbot esempio</div>
+                                    <small class="text-muted">10:30</small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10">
+                <div class="d-flex flex-column h-100">
+                    <!-- Header -->
+                    <div class="bg-primary text-white p-3 mb-3">
+                        <h1 class="h3 mb-0">Chatbot</h1>
+                    </div>
+                    
+                    <!-- Chat messages area -->
+                    <div class="flex-grow-1 overflow-auto p-3 bg-light" style="min-height: 400px;">
+                        <!-- Welcome section -->
+                        <div class="text-center mb-4">
+                            <h2 class="h4">Benvenuto!</h2>
+                            <p class="text-muted">Domande frequenti</p>
+                        </div>
+
+                        <!-- Suggested questions -->
+                        <div class="row mb-4">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Quanti pazienti sono stati ricoverati nel 2023?</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Quanti farmaci per tipologia sono stati prescritti lo scorso anno?</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Quanti pazienti sono sotto l'ATS di Monza?</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Response Type Selection -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Che tipo di risposta vuoi?</h5>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="responseType" id="testo" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="testo">
+                                        <i class="fas fa-file-alt me-2"></i>Testo
+                                    </label>
+                                    
+                                    <input type="radio" class="btn-check" name="responseType" id="tabella" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="tabella">
+                                        <i class="fas fa-table me-2"></i>Tabella
+                                    </label>
+                                    
+                                    <input type="radio" class="btn-check" name="responseType" id="grafico" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="grafico">
+                                        <i class="fas fa-chart-bar me-2"></i>Grafico
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Input area -->
+                    <div class="bg-white border-top p-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Scrivi il tuo messaggio..." aria-label="Messaggio">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/js/bootstrap-italia.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
