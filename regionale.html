@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portale Regione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/css/bootstrap-italia.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Stili aggiuntivi per la pagina regionale */
+        body {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .regionale-header {
+            background-color: white;
+            border-bottom: 2px solid var(--green-dark);
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .regionale-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .regionale-logo {
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        .regionale-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin: 0;
+        }
+
+        .regionale-subtitle {
+            font-size: 16px;
+            color: var(--green-accent);
+            margin: 5px 0 0 0;
+        }
+
+        .nav-regionale {
+            background-color: var(--green-dark);
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .nav-regionale-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-regionale-item {
+            flex: 1;
+        }
+
+        .nav-regionale-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.3s;
+            border-right: 1px solid var(--green-accent);
+        }
+
+        .nav-regionale-item:last-child .nav-regionale-link {
+            border-right: none;
+        }
+
+        .nav-regionale-link:hover {
+            background-color: var(--green-medium);
+        }
+
+        .nav-regionale-link.active {
+            background-color: var(--green-medium);
+        }
+
+        .main-content-regionale {
+            background-color: var(--green-pale);
+            min-height: calc(100vh - 200px);
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border: 1px solid var(--green-accent);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-regionale-list {
+                flex-direction: column;
+            }
+            
+            .nav-regionale-link {
+                border-right: none;
+                border-bottom: 1px solid var(--green-accent);
+            }
+            
+            .nav-regionale-item:last-child .nav-regionale-link {
+                border-bottom: none;
+            }
+            
+            .regionale-title {
+                font-size: 24px;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .regionale-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="regionale-header">
+        <div class="regionale-container">
+            <div class="logo-section">
+                <img src="assets/images/logolombardia.jpg" alt="Logo Regione" class="regionale-logo">
+                <div>
+                    <h1 class="regionale-title">Portale Servizi Regionali</h1>
+                    <p class="regionale-subtitle">Piattaforma integrata per i servizi della regione</p>
+                </div>
+            </div>
+            
+            <nav class="nav-regionale">
+                <ul class="nav-regionale-list">
+                    <li class="nav-regionale-item">
+                        <a href="#flusso" class="nav-regionale-link" onclick="navigateTo('flusso')">
+                            <i class="fas fa-stream"></i> Flusso
+                        </a>
+                    </li>
+                    <li class="nav-regionale-item">
+                        <a href="#flusso-c" class="nav-regionale-link" onclick="navigateTo('flusso-c')">
+                            <i class="fas fa-code-branch"></i> Flusso C
+                        </a>
+                    </li>
+                    <li class="nav-regionale-item">
+                        <a href="#flusso-ministeriale" class="nav-regionale-link" onclick="navigateTo('flusso-ministeriale')">
+                            <i class="fas fa-building"></i> Flusso Ministeriale
+                        </a>
+                    </li>
+                    <li class="nav-regionale-item">
+                        <a href="index.html" class="nav-regionale-link" onclick="navigateToChatbot(event)">
+                            <i class="fas fa-robot"></i> Chatbot
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content-regionale">
+        <div class="regionale-container">
+            <div class="content-section">
+                <h2 class="section-title">Benvenuto nel Portale Servizi Regionali</h2>
+                <p class="section-text">
+                    Questo portale ti permette di accedere a tutti i servizi digitali offerti dalla regione. 
+                    Utilizza la navigazione superiore per esplorare i differenti flussi di dati e servizi disponibili.
+                </p>
+                
+                <div class="card-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="service-title">Flusso Dati</h3>
+                        <p class="service-description">
+                            Accedi al flusso principale di dati regionali per monitorare e analizzare le informazioni in tempo reale.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="service-title">Flusso C</h3>
+                        <p class="service-description">
+                            Servizi specializzati per la gestione dei flussi di comunicazione tra enti e strutture sanitarie.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3 class="service-title">Flusso Ministeriale</h3>
+                        <p class="service-description">
+                            Integrazione con i sistemi ministeriali per la gestione dei protocolli nazionali.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="service-title">Assistente Virtuale</h3>
+                        <p class="service-description">
+                            Chiedi aiuto al nostro chatbot per ottenere risposte immediate alle tue domande.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="content-area" class="content-section" style="display: none;">
+                <!-- Il contenuto dinamico verrà caricato qui -->
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.8.5/dist/js/bootstrap-italia.bundle.min.js"></script>
+    <script>
+        function navigateTo(section) {
+            // Rimuovi la classe active da tutti i link
+            document.querySelectorAll('.nav-regionale-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Aggiungi la classe active al link cliccato
+            event.target.classList.add('active');
+            
+            // Mostra il contenuto dinamico
+            const contentArea = document.getElementById('content-area');
+            contentArea.style.display = 'block';
+            
+            // Carica il contenuto in base alla sezione
+            switch(section) {
+                case 'flusso':
+                    contentArea.innerHTML = `
+                        <h2 class="section-title">Flusso Principale</h2>
+                        <p class="section-text">
+                            Il flusso principale raccoglie tutti i dati provenienti dalle strutture regionali 
+                            e li elabora per fornire analisi e report in tempo reale.
+                        </p>
+                        <div class="card-grid">
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-database"></i></div>
+                                <h3 class="service-title">Database Centrale</h3>
+                                <p class="service-description">Archivio unico di tutti i dati regionali</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+                                <h3 class="service-title">Sincronizzazione</h3>
+                                <p class="service-description">Aggiornamento automatico dei dati</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'flusso-c':
+                    contentArea.innerHTML = `
+                        <h2 class="section-title">Flusso C - Comunicazioni</h2>
+                        <p class="section-text">
+                            Sistema dedicato alla gestione delle comunicazioni tra i diversi enti regionali 
+                            e le strutture sanitarie del territorio.
+                        </p>
+                        <div class="card-grid">
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-envelope"></i></div>
+                                <h3 class="service-title">Messaggistica</h3>
+                                <p class="service-description">Sistema di messaggistica sicura tra enti</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                                <h3 class="service-title">Documentazione</h3>
+                                <p class="service-description">Repository centralizzato di documenti</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'flusso-ministeriale':
+                    contentArea.innerHTML = `
+                        <h2 class="section-title">Flusso Ministeriale</h2>
+                        <p class="section-text">
+                            Interfaccia diretta con i sistemi ministeriali per la gestione dei protocolli 
+                            nazionali e la trasmissione dei dati obbligatori.
+                        </p>
+                        <div class="card-grid">
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <h3 class="service-title">Scambio Dati</h3>
+                                <p class="service-description">Trasmissione sicura verso il ministero</p>
+                            </div>
+                            <div class="service-card">
+                                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="service-title">Sicurezza</h3>
+                                <p class="service-description">Protocolli di sicurezza certificati</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            // Scroll to content
+            contentArea.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function navigateToChatbot(event) {
+            // Permetti la navigazione normale verso il chatbot
+            // Non preveniamo il comportamento di default
+        }
+        
+        // Imposta il primo link come attivo al caricamento
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstLink = document.querySelector('.nav-regionale-link');
+            if (firstLink) {
+                firstLink.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

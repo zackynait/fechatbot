@@ -1,0 +1,26 @@
+{
+  "name": "fechatbot",
+  "version": "1.0.0",
+  "description": "Frontend Chatbot for Public Administration with Bootstrap Italia and SDUILE design",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "echo 'Build process would be here'",
+    "dev": "live-server --port=3000 --open=/index.html"
+  },
+  "keywords": [
+    "chatbot",
+    "bootstrap-italia",
+    "sduile",
+    "public-administration",
+    "frontend"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-italia": "^2.8.5"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
