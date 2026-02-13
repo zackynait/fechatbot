@@ -3,10 +3,13 @@
     display: flex;
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+    width: 100%;
 }
 
 .sidebar {
-    width: 300px;
+    width: 20%;
+    min-width: 250px;
     background: var(--green-lighter);
     border-right: 1px solid var(--green-primary);
     display: flex;
@@ -115,6 +118,8 @@
     display: flex;
     flex-direction: column;
     background: var(--green-bg);
+    min-width: 0;
+    width: 80%;
 }
 
 .chat-header {
@@ -132,6 +137,8 @@
     flex: 1;
     overflow-y: auto;
     padding: 20px;
+    max-width: none;
+    width: 100%;
 }
 
 .welcome-section {
@@ -150,8 +157,11 @@
 
 .suggestions-container {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
     margin-bottom: 20px;
+    max-width: 100%;
+    width: 100%;
 }
 
 .suggestion-card {
@@ -191,6 +201,8 @@
     padding: 20px;
     border-top: 1px solid var(--green-primary);
     background: white;
+    max-width: 100%;
+    width: 100%;
 }
 
 .input-wrapper {
@@ -422,6 +434,8 @@ header .text-muted {
     
     .chat-container {
         flex-direction: column;
+        max-width: 100%;
+        width: 100%;
     }
     
     .sidebar {
@@ -429,5 +443,36 @@ header .text-muted {
         height: auto;
         border-right: none;
         border-bottom: 1px solid var(--green-primary);
+        min-width: unset;
+    }
+    
+    .main-content {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .chat-messages {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .suggestions-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .input-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 25%;
+        min-width: 200px;
+    }
+    
+    .main-content {
+        width: 75%;
     }
 }
